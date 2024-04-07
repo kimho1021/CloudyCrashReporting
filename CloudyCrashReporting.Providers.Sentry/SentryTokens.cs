@@ -3,5 +3,5 @@ namespace CloudyCrashReporting.Providers.Sentry;
 static class SentryTokens
 {
     public static string Dsn =>
-        "https://4a2d4e5027670a17b555cfc19dce9fb0@o4506525694164992.ingest.sentry.io/4506525695606784";
+		"https://13a56726b66f9e44f86fe5676ed17578@o4507037341581312.ingest.us.sentry.io/4507040302301184";
 }

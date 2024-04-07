@@ -6,7 +6,7 @@ namespace CloudyCrashReporting;
 
 public unsafe partial class PlatformExceptionTester
 {
-    public partial void QueueInvalidOperation()
+    public partial void QueueInvalidOperation123()
     {
         var ns = (ulong)TimeSpan.FromSeconds(1).TotalNanoseconds;
         var queue = DispatchQueue.MainQueue;

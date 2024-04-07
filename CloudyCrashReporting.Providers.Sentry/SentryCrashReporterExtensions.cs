@@ -1,5 +1,7 @@
 using CloudyCrashReporting.Providers.Sentry;
 
+using System.Diagnostics;
+
 namespace CloudyCrashReporting.Providers;
 
 public static class SentryCrashReporterExtensions
@@ -27,14 +29,24 @@ public static class SentryCrashReporterExtensions
 
             // Configure unique user ID. 
             var userId = Preferences.Default.Get("SentryUserId", Guid.NewGuid().ToString("N"));
-            Preferences.Default.Set("SentryUserId", userId);
-            options.ConfigureScope(scope =>
-            {
-                scope.User.Id = userId;
-            });
-      
+            //Preferences.Default.Set("SentryUserId", userId);
+            //options.ConfigureScope(scope =>
+            //{
+            //    scope.User.Id = userId;
+            //});
+
             // Other Sentry options can be set here.
-        });
+
+   //         options.IncludeTitleInBreadcrumbs = true;
+			//options.IncludeBackgroundingStateInBreadcrumbs = true;
+
+			options.SetBeforeBreadcrumb(breadcrumb => {
+                Debug.WriteLine(breadcrumb.Message);
+                return breadcrumb;
+			});
+
+
+		});
         
         return builder;
     }
